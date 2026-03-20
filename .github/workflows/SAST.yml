@@ -3,7 +3,9 @@
 # Visit https://docs.shiftleft.io for help
 name: Harness SAST and SCA
 
-on: [pull_request,workflow_dispatch]
+on:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   NextGen-Static-Analysis:
