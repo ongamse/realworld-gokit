@@ -1,11 +1,7 @@
 ---
 name: FullContainer
 
-on:
-  pull_request:
-  workflow_dispatch:
-  push:
-
+on:[push, pull_request]
 
 jobs:
   Qwiet-Static-Analysis:
