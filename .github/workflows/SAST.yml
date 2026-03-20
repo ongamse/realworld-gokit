@@ -1,0 +1,25 @@
+---
+name: FullContainer
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+
+
+jobs:
+  Qwiet-Static-Analysis:
+    runs-on: ubuntu-latest
+    container: shiftleft/core:latest
+    
+    steps:
+    
+    - uses: actions/checkout@v4
+    - name: Run sl analyze 
+      shell: bash
+      run: |
+        #go mod init example.com/Go
+        #sl analyze --verbose --wait --app "${GITHUB_REPOSITORY#*/}" --verbose --tag app.group="${GITHUB_REPOSITORY_OWNER}_${GITHUB_REPOSITORY#*/}" --go Go
+        sl analyze --verbose --wait --app realworld-go-kit --verbose --go /internal
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
