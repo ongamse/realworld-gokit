@@ -22,8 +22,8 @@ jobs:
 
     - name: preZero Static Analysis
       run: |
-        # ${GITHUB_WORKSPACE}/sl --version
-        export SYFT_JAVASCRIPT_INCLUDE_DEV_DEPENDENCIES \
+        ${GITHUB_WORKSPACE}/sl --version
+        ${GITHUB_WORKSPACE}/export SYFT_JAVASCRIPT_INCLUDE_DEV_DEPENDENCIES
         ${GITHUB_WORKSPACE}/sl analyze --strict --wait --verbose --app realworld-gokit --tag branch=${{ github.head_ref }} --go internal/
         #SYFT_JAVASCRIPT_INCLUDE_DEV_DEPENDENCIES sl analyze --strict --wait --verbose --app realworld-gokit --tag branch=${{ github.head_ref }} --go .
       env:
