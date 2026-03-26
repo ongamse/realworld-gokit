@@ -19,16 +19,11 @@ jobs:
     - name: Download Harness SAST and SCA CLI
       run: |
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
-
-    - name: Build
-      run: |
-        go build cmd/conduit
-        go build cmd/seed
         
     - name: preZero Static Analysis
       run: |
         ${GITHUB_WORKSPACE}/sl --version
-        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --verbose --app realworld-gokit --tag branch=${{ github.head_ref }} --go internal/
+        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --verbose --app realworld-gokit --tag branch=${{ github.head_ref }} --go ./...
         
       env:
         SYFT_JAVASCRIPT_INCLUDE_DEV_DEPENDENCIES: 1
