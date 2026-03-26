@@ -22,7 +22,7 @@ jobs:
 
     - name: Build
       run: |
-        go build
+        go build ./..
         
     - name: preZero Static Analysis
       run: |
