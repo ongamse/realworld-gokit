@@ -23,7 +23,7 @@ jobs:
     - name: preZero Static Analysis
       run: |
         ${GITHUB_WORKSPACE}/sl --version
-        ${GITHUB_WORKSPACE}/QWIET_SCA_INCLUDE_GO_ALL_DEPENDENCIES=true sl analyze --strict --wait --verbose --app realworld-gokit --oss-recursive --tag branch=${{ github.head_ref }} --go .
+        QWIET_SCA_INCLUDE_GO_ALL_DEPENDENCIES=true ${GITHUB_WORKSPACE}/ sl analyze --strict --wait --verbose --app realworld-gokit --oss-recursive --tag branch=${{ github.head_ref }} --go .
         
       env:
         SYFT_GO_INCLUDE_DEV_DEPENDENCIES: 1
